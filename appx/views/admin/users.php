@@ -34,6 +34,7 @@
 											<th><?php echo get_phrase('full_name'); ?></th>
  											<th><?php echo get_phrase('email'); ?></th>
 											<th><?php echo get_phrase('username'); ?></th>
+											<th><?php echo get_phrase('company'); ?></th>
 											<th><?php echo get_phrase('phone'); ?></th>
 											<th><?php echo get_phrase('created_on'); ?></th>
 											<th><?php echo get_phrase('status'); ?></th>
@@ -49,6 +50,7 @@
 												<td><?php echo $user->first_name.' '.$user->last_name ?> </td>
  												<td><?php echo $user->email; ?> </td>
 												<td><?php echo $user->username; ?> </td>
+												<td><?php echo $user->company; ?> </td>
 												<td><?php echo $user->phone; ?> </td>
 												<td><?php echo date('F/j/Y',$user->created_on); ?> </td>
 												<td>
@@ -108,6 +110,12 @@
 									<label class="col-sm-2 col-sm-2 control-label"><?php echo get_phrase('last_name'); ?><b style="color:red">*</b></label>
 									<div class="col-sm-10">
 										<?php echo form_input($last_name);?><br>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 col-sm-2 control-label"><?php echo get_phrase('company'); ?><b style="color:red">*</b></label>
+									<div class="col-sm-10">
+										<?php echo form_input($company);?><br>
 									</div>
 								</div>
 								<div class="form-group">
