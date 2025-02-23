@@ -22,7 +22,7 @@ INSTALLATION
 * Create a database and import ```database/coaching_lrm.sql```
 * Change the databse settings to your own in the ```appx/config/database.php```
 * If you are using apache on linux make sure you have .htaccess override enabled (by default it is disabled)
-* Go to ```http://your_server_ip/cclms/``` and login with <b>username</b> admin@admin.com <b>password</b> password
+* Go to ```http://your_server_ip/cclms/``` and login with <b>username</b> admin@admin.com <b>password</b> admin@admin.com
 
 Contribution
 ------------
