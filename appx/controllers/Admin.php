@@ -394,5 +394,12 @@ class Admin extends CI_Controller {
 			return FALSE;
 	}
 
+	public function get_all_leads(){
+		$data['leads'] = $this->Admin_model->get_all_leads();
+		$this->load->view('admin/include/header');
+		$this->load->view('admin/include/navbar');
+		$this->load->view('admin/leads',$data);
+		$this->load->view('admin/include/footer');
+	}
 	
 }

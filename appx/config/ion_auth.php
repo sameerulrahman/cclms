@@ -44,6 +44,7 @@ $config['tables']['users_groups']    = 'users_groups';
 $config['tables']['login_attempts']  = 'login_attempts';
 $config['tables']['settings']		 = 'settings';
 $config['tables']['images']			 = 'images';
+$config['tables']['institutes']		 = 'institutes';
 
 /*
  | Users table column and Group table column you want to join WITH.
