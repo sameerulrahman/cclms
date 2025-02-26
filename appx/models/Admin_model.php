@@ -260,5 +260,12 @@ class Admin_model extends CI_Model {
 		return $result;
 
 	}
+	function get_all_leads(){
+		$this->db->select('*');
+		$this->db->from('leads');
+		$query = $this->db->get();
+		$result = $query->result();
+		return $result;
+	}
 	  
 }

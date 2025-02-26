@@ -1003,7 +1003,17 @@ class Ion_auth_model extends CI_Model
 				$this->add_to_group($group, $id);
 			}
 		}
-
+		// Insert into institutes table
+		if(!empty($id && !empty($additional_data))){
+			$institute_data = array(
+				'email' => $email,
+				'ion_user_id' => $id
+			);
+			// $final_institute_data = array_merge($additional_data, $institute_data);
+			$final_institute_data = array_merge($this->_filter_data($this->tables['institutes'], $additional_data), $institute_data);
+			$this->db->insert('institutes', $final_institute_data);
+		}
+		
 		$this->trigger_events('post_register');
 
 		return (isset($id)) ? $id : FALSE;

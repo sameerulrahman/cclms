@@ -56,3 +56,4 @@ $route['announcements/all'] = 'announce';
 $route['settings/change'] = 'settings';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+$route['admin/leads'] = 'admin/get_all_leads';
