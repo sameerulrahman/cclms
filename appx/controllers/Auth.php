@@ -73,6 +73,17 @@ class Auth extends CI_Controller
 			{
 				//if the login is successful
 				//redirect them back to the home page
+				$current_user_id = $this->session->userdata('user_id');
+				$institute_id='';
+				try{
+					$institute = $this->Crud_model->get_row('institutes','ion_user_id',$current_user_id);
+					if($institute){
+						$institute_id=$institute->id;
+						$this->session->set_userdata('institute_id', $institute_id);
+					}
+				} catch (Exception $e) {
+					$this->session->set_flashdata('message', 'You are not authorized to access institute data');
+				}
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
 				redirect( base_url().'admin/', 'refresh');
 			}

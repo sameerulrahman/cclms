@@ -57,3 +57,7 @@ $route['settings/change'] = 'settings';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['admin/leads'] = 'admin/get_all_leads';
+$route['leads/student_form'] = 'leads/create';
+$route['leads/add_new_lead'] = 'leads/store';
+$route['admin/edit_lead/(:any)'] = 'admin/edit_lead/$1';
+$route['leads/update_lead/(:any)'] = 'leads/update_lead/$1';
