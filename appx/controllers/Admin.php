@@ -18,6 +18,8 @@ class Admin extends CI_Controller {
 	{
         parent::__construct(); 
 		$this->load->model('Admin_model');	
+		$this->load->model('Crud_model');	
+		$this->load->model('Leads_model');	
 		$this->load->helper('file');
 		$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
 		$this->lang->load(array('ion_auth','auth'));
@@ -71,6 +73,17 @@ class Admin extends CI_Controller {
 			{
 				//if the login is successful
 				//redirect them back to the home page
+				$current_user_id = $this->session->userdata('user_id');
+				$institute_id='';
+				try{
+					$institute = $this->Crud_model->get_row('institutes','ion_user_id',$current_user_id);
+					if($institute){
+						$institute_id=$institute->id;
+						$this->session->set_userdata('institute_id', $institute_id);
+					}
+				} catch (Exception $e) {
+					$this->session->set_flashdata('message', 'You are not authorized to access institute data');
+				}
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
 				redirect( base_url().'admin/', 'refresh');
 			}
@@ -395,11 +408,26 @@ class Admin extends CI_Controller {
 	}
 
 	public function get_all_leads(){
-		$data['leads'] = $this->Admin_model->get_all_leads();
+		$data['leads'] = $this->Leads_model->get_all_leads();
+		$data['institutes'] = $this->Crud_model->get('institutes'); //directly send table name
+        $data['courses'] = $this->Leads_model->courses();
+        $data['classes'] = $this->Leads_model->classes();
+		$data['statuses'] = $this->Leads_model->lead_status();
 		$this->load->view('admin/include/header');
 		$this->load->view('admin/include/navbar');
 		$this->load->view('admin/leads',$data);
 		$this->load->view('admin/include/footer');
 	}
+	public function edit_lead($id){
+        $data['lead'] = $this->Crud_model->get_row('leads','id',$id);
+		$data['institutes'] = $this->Crud_model->get('institutes');
+        $data['courses'] = $this->Leads_model->courses();
+        $data['classes'] = $this->Leads_model->classes();
+		$data['statuses'] = $this->Leads_model->lead_status();
+		$this->load->view('admin/include/header');
+		$this->load->view('admin/include/navbar');
+        $this->load->view('admin/edit_lead_form',$data);
+        $this->load->view('admin/include/footer');
+    }
 	
 }

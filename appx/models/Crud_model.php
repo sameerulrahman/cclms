@@ -100,4 +100,27 @@ class Crud_model extends CI_Model {
         $query = $this->db->get($table);
 		return $query->result_array();		
     }
+
+    public function get_row($table = "", $col_name1 = FALSE, $col_value1 = FALSE, $col_name2 = FALSE, $col_value2 = FALSE, $col_name3 = FALSE, $col_value3 = FALSE, $col_name4 = FALSE, $col_value4 = FALSE)
+{
+    if ($col_name1 && $col_value1 !== FALSE) {
+        $this->db->where($col_name1, $col_value1);
+    }
+
+    if ($col_name2 && $col_value2 !== FALSE) {
+        $this->db->where($col_name2, $col_value2);
+    }
+
+    if ($col_name3 && $col_value3 !== FALSE) {
+        $this->db->where($col_name3, $col_value3);
+    }
+
+    if ($col_name4 && $col_value4 !== FALSE) {
+        $this->db->where($col_name4, $col_value4);
+    }
+
+    $query = $this->db->get($table);
+    return $query->row(); // Fetches a single row
+}
+
 }

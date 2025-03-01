@@ -122,6 +122,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     />
     <!--end::Primary Meta Tags-->
     <!--begin::Fonts-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-3@5.0.12/index.css"
